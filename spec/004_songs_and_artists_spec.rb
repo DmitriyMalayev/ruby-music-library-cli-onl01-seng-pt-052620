@@ -55,18 +55,4 @@ describe "Associations — Song and Artist:" do
       end
     end
   end
-  context "Song" do
-    describe "#artist=" do
-      it "invokes Artist#add_song to add itself to the artist's collection of songs (artist has many songs)" do
-        expect(artist).to receive(:add_song)
-        song.artist = artist
-      end
-    end
-    describe "#initialize" do
-      it "invokes #artist= instead of simply assigning to an @artist instance variable to ensure that associations are created upon initialization" do
-        expect_any_instance_of(Song).to receive(:artist=).with(artist)
-        Song.new("Two-Headed Boy", artist)
-      end
-    end
-  end
 end
